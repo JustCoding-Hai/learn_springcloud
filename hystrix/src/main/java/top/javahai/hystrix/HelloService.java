@@ -22,10 +22,12 @@ public class HelloService {
 
   /**
    *方法中发起远程调用可能会出现调用失败
-   * 使用@HystrixCommand注解，配置fallbackMethod属性用于方法调用失败后的临时替代方法
+   * 使用@HystrixCommand注解，
+   * 1.配置fallbackMethod属性用于方法调用失败后的临时替代方法
+   * 2.配置ignoreException属性定义忽略多个异常，方法中发生被忽略的异常就不会进行服务降级，而是直接抛出
    * @return
    */
-  @HystrixCommand(fallbackMethod = "error")
+  @HystrixCommand(fallbackMethod = "error",ignoreExceptions ={NullPointerException.class, ArithmeticException.class})
   public String hello(){
     int i=1/0;
     return restTemplate.getForObject("http://provider/hello",String.class);
@@ -74,7 +76,9 @@ public class HelloService {
     return "error:helloCache";
    }
   /**
-   * 测试@CacheRemove
+   * 测试@CacheRemove，用于缓存中的数据
+   * 该注解的commandKey属性不提供默认值，所以必须指定commandKey属性，commandKey的值就是缓存方法的
+   * 方法名
    */
   @HystrixCommand
   @CacheRemove(commandKey = "helloCache")

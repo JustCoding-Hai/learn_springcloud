@@ -76,5 +76,9 @@ public class HelloController {
     System.out.println(id);
   }
 
+  @GetMapping("/user3")
+  public void getUserByName(@RequestHeader("name") String name){
+    System.out.println("get header property of  name:"+name);
+  }
 
 }

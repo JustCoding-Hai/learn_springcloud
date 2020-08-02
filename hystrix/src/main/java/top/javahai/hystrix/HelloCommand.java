@@ -1,6 +1,7 @@
 package top.javahai.hystrix;
 
 import com.netflix.hystrix.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -23,12 +24,24 @@ public class HelloCommand extends HystrixCommand<String> {
   }
 
   /**
-   * 继承类的方式中实现服务的容错
-   * 方法调用失败时会调用该方法。通过getExecutionException获取发生的异常
+   * 继承类的方式中实现服务的容错：重写getFallback()方法实现
+   * 方法调用失败时会调用该方法。通过getExecutionException()方法获取发生的异常
    * @return
    */
   @Override
   protected String getFallback() {
     return "Error-Extends:"+getExecutionException().toString();
+  }
+
+  /**
+   * 待实现：继承方式实现请求缓存
+   * 1.提供一个name属性
+   * 2.构造方法需要初始化name属性
+   * 3.重写getCacheKey，返回name属性
+   * @return
+   */
+  @Override
+  protected String getCacheKey() {
+    return super.getCacheKey();
   }
 }

@@ -31,7 +31,7 @@ public class HelloController {
   /**
    * 请求命令，
    * 需要注意一次实例只能够执行一次
-   * 可以直接执行或者先入队后再执行
+   * 可以选择直接执行或者先入队后再执行
    * @return
    */
   @GetMapping("/hello2")
@@ -52,6 +52,13 @@ public class HelloController {
     }
     return result01+" "+result02;
   }
+
+  /**
+   * 通过注解方式实现请求的异步调用
+   * @return
+   * @throws ExecutionException
+   * @throws InterruptedException
+   */
   @GetMapping("/hello3")
   public String hello3() throws ExecutionException, InterruptedException {
     Future<String> stringFuture = helloService.hello2();
@@ -71,6 +78,8 @@ public class HelloController {
     HystrixRequestContext hystrixRequestContext = HystrixRequestContext.initializeContext();
     //第一次请求，缓存了结果
     String s=helloService.helloCache("hai");
+    //再次发起请求，这次不会请求provider服务的接口，而是直接获取缓存中的结果
+    s=helloService.helloCache("hai");
     //删除了数据同时删除了缓存中的数据
     helloService.deleteUser("hai");
     //再次发起请求

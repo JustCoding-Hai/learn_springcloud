@@ -11,9 +11,24 @@
         <module name="provider" />
         <module name="eureka" />
         <module name="hystrix" />
+        <module name="openfeign" />
+        <module name="hello-api" />
         <module name="consumer" />
+        <module name="maven-archiver (2)" />
+      </profile>
+      <profile name="Annotation profile for Unknown" enabled="true">
+        <sourceOutputDir name="../generated-sources/annotations" />
+        <sourceTestOutputDir name="../generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="maven-archiver (3)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="maven-archiver" target="1.8" />
+      <module name="maven-archiver (1)" target="1.8" />
+      <module name="maven-archiver (2)" target="1.8" />
+      <module name="maven-archiver (3)" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -21,6 +36,7 @@
       <module name="consumer" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="hystrix" options="-parameters" />
+      <module name="openfeign" options="-parameters" />
       <module name="provider" options="-parameters" />
     </option>
   </component>
