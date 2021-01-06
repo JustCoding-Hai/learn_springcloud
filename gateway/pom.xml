@@ -20,6 +20,7 @@
 	</properties>
 
 	<dependencies>
+		<!--TODO 不需要引入web依赖，否则会报错  错误信息：-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
 			<!--<artifactId>spring-boot-starter-web</artifactId>-->
