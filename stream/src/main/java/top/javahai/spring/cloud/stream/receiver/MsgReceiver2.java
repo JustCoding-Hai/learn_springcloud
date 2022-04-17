@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.messaging.Message;
 import top.javahai.spring.cloud.stream.channel.MyChannel;
 import top.javahai.spring.cloud.stream.channel.MyChannel;
 
@@ -21,8 +22,9 @@ public class MsgReceiver2 {
     public final static Logger LOGGER = LoggerFactory.getLogger(MsgReceiver2.class);
 
     @StreamListener(MyChannel.HELLO_INPUT)
-    public void receive(Object payload) {
-        LOGGER.info(new Date() + "MsgReceiver receive2:" + payload);
+    //TODO 测试
+    public void receive(Message<String> message) {
+        LOGGER.info(new Date() + "MsgReceiver receive2:" + message);
     }
 
 

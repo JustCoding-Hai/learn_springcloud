@@ -12,7 +12,7 @@ import org.springframework.cloud.stream.messaging.Sink;
  * @description:
  * @create 2022/1/31 - 20:28
  **/
-//@EnableBinding 表示绑定 Sink 消息通道
+//@EnableBinding 表示绑定 Sink 消息通道，定义消息的接收管道
 @EnableBinding(Sink.class)
 public class MsgReceiver {
     public final static Logger LOGGER = LoggerFactory.getLogger(MsgReceiver.class);
