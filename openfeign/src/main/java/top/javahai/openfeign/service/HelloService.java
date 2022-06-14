@@ -4,6 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import top.javahai.model.User;
 import top.javahai.openfeign.HelloServiceFallback;
+import top.javahai.openfeign.HelloServiceFallbackFactory;
 
 import javax.ws.rs.PUT;
 
@@ -15,7 +16,8 @@ import javax.ws.rs.PUT;
  * @author Ethan Huang
  * @create 2020-07-29 16:07
  */
-@FeignClient(value = "provider",fallback = HelloServiceFallback.class)
+//@FeignClient(value = "provider",fallback = HelloServiceFallback.class)
+@FeignClient(value = "provider",fallbackFactory = HelloServiceFallbackFactory.class)
 public interface HelloService {
     /**
      * 请求provider的“/hello接口”

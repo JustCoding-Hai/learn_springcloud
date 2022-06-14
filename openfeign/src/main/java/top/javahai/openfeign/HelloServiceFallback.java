@@ -19,7 +19,7 @@ public class HelloServiceFallback implements HelloService {
 
     @Override
     public String hello2(String name) {
-        return "error";
+        return "error2";
     }
 
     @Override

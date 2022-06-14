@@ -11,15 +11,17 @@ import org.springframework.web.client.RestTemplate;
  */
 public class HelloCommand extends HystrixCommand<String> {
   RestTemplate restTemplate;
+  String name;
 
-  protected HelloCommand(Setter setter, RestTemplate restTemplate) {
+  protected HelloCommand(Setter setter, RestTemplate restTemplate, String name) {
     super(setter);
+    this.name = name;
     this.restTemplate=restTemplate;
   }
 
   @Override
   protected String run() throws Exception {
-    int i=1/0;
+//    int i=1/0;
     return restTemplate.getForObject("http://provider/hello",String.class);
   }
 
@@ -34,14 +36,11 @@ public class HelloCommand extends HystrixCommand<String> {
   }
 
   /**
-   * 待实现：继承方式实现请求缓存
-   * 1.提供一个name属性
-   * 2.构造方法需要初始化name属性
-   * 3.重写getCacheKey，返回name属性
+   * 继承方式实现请求缓存
    * @return
    */
   @Override
   protected String getCacheKey() {
-    return super.getCacheKey();
+    return name;
   }
 }

@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test_route
+          uri: lb://provider
+          filters:
+            - AddRequestParameter=name,robot
+          predicates:
+            - Path=/test_get
+      discovery:
+        locator:
+          enabled: true # 开启自动代理
+  application:
+    name: gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

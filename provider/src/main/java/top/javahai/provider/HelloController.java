@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import top.javahai.model.User;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 /**
@@ -17,6 +21,8 @@ public class HelloController {
 
   @GetMapping("/hello")
   public String hello(){
+    System.out.println(new Date());
+
     return "hello world port:"+port;
   }
 
@@ -77,8 +83,8 @@ public class HelloController {
   }
 
   @GetMapping("/user3")
-  public void getUserByName(@RequestHeader("name") String name){
-    System.out.println("get header property of  name:"+name);
+  public void getUserByName(@RequestHeader("name") String name) throws UnsupportedEncodingException {
+    System.out.println("get header property of  name:"+ URLDecoder.decode(name,"UTF-8"));
   }
 
 }

@@ -76,7 +76,7 @@ public class HelloService {
     return "error:helloCache";
    }
   /**
-   * 测试@CacheRemove，用于缓存中的数据
+   * 测试@CacheRemove，用于删除缓存中的数据
    * 该注解的commandKey属性不提供默认值，所以必须指定commandKey属性，commandKey的值就是缓存方法的
    * 方法名
    */

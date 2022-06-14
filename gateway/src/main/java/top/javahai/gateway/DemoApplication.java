@@ -18,9 +18,9 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-//	@Bean
-//    RouteLocator routeLocator(RouteLocatorBuilder builder){
-//        return  builder.routes().route("test_route", r -> r.path("/get1").uri("http://httpbin.org")).build();
-//    }
+	@Bean
+    RouteLocator routeLocator(RouteLocatorBuilder builder){
+        return  builder.routes().route("test_route", r -> r.path("/get").uri("http://httpbin.org")).build();
+    }
 
 }

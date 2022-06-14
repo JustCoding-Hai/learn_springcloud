@@ -19,6 +19,7 @@ import java.util.List;
 public class UserController {
   @GetMapping("/{ids}")
   public List<User> getUsersByIds(@PathVariable String ids){
+    System.out.println("接收到请求："+ids);
     String[] split = ids.split(",");
     List<User> users = new ArrayList<>();
     for (String id : split) {
