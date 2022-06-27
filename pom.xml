@@ -21,6 +21,7 @@
         <module>resilience4j</module>
         <module>sleuth</module>
         <module>zipkin</module>
+        <module>consul-config</module>
     </modules>
 
 
