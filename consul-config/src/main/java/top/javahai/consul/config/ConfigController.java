@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConfigController {
 
 
-    @Value("${config.info:}")
+    @Value("${config.info}")
     private String configInfo;
 
     @GetMapping("/configInfo")

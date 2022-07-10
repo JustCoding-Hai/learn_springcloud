@@ -1,6 +1,8 @@
 server:
   port: 9101
 spring:
+  profiles:
+    active: dev
   application:
     name: consul-config
   cloud:
@@ -19,7 +21,9 @@ spring:
         format: yaml
         #设置配置所在目录
         prefix: config
+        # 设置应用的文件夹名称，默认值application
+        default-context: consul-config
         #设置配置的分隔符
         profile-separator: ':'
-        #配置key的名字，由于Consul是K/V存储，配置存储在对应K的V中
+        #配置key的名字，由于Consul是K/V存储，配置存储在对应K的V中（配置文件名）
         data-key: data
