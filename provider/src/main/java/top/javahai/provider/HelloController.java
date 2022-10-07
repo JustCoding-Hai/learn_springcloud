@@ -21,10 +21,9 @@ public class HelloController {
 
   @GetMapping("/hello")
   public String hello(){
-    int i = 1/0;
     System.out.println(new Date());
 
-    return "hello world port:"+port;
+    return "hello world port:"+port + new Date();
   }
 
   @GetMapping("/test_get")
